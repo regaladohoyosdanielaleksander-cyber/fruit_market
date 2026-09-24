@@ -24,4 +24,19 @@ class DepartamentoModel
             return [];
         }
     }
+
+    public function getById($idDepartamento)
+    {
+        try {
+            $sql = "SELECT * FROM departamento WHERE idDepartamento = :idDepartamento";
+            $consulta = $this->connection->prepare($sql);
+            $consulta->bindParam(':idDepartamento', $idDepartamento, PDO::PARAM_INT);
+            $consulta->execute();
+
+            return $consulta->fetch(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            return null;
+        }
+    }
 }

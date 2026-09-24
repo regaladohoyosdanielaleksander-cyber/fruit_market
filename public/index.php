@@ -1,22 +1,43 @@
 <?php
 
-require_once("../clases/Producto.php");
+require_once __DIR__ . '/../app/controllers/ProductoController/ProductoController.php';
+require_once __DIR__ . '/../app/controllers/MarcaController/MarcaController.php';
+require_once __DIR__ . '/../app/controllers/CiudadController/CiudadController.php';
+require_once __DIR__ . '/../app/controllers/DepartamentoController/DepartametoController.php';
+require_once __DIR__ . '/../app/controllers/TipoDocController/TipoDocController.php';
+require_once __DIR__ . '/../app/controllers/TipoPagoController/TipoPagoController.php';
+require_once __DIR__ . '/../app/controllers/TipoProductoController/TipoProductoController.php';
 
-$producto1 = new Producto("Mango", 5000, 100, "Frutas");
-
-echo "Informacion del producto:" . "<br>";
-echo "Nombre: " . $producto1->getNombre() . "<br>";
-echo "Precio: " . $producto1->getPrecio() . "<br>";
-echo "Cantidad: " . $producto1->getCantidad() . "<br>";
-echo "Categoria: " . $producto1->getCategoria() . "<br>";
-
-echo "<br>";
-echo "Probando validaciones:" . "<br>";
-
-$producto1->setNombre("");
-
-$producto1->setPrecio(-1000);
-
-$producto1->setCantidad(-5);
+$productoController = new ProductoController();
+$marcaController = new MarcaController();
+$ciudadController = new CiudadController();
+$departamentoController = new DepartamentoController();
+$tipoDocController = new TipoDocController();
+$tipoPagoController = new TipoPagoController();
+$tipoProductoController = new TipoProductoController();
 
 ?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Fruit Market</title>
+</head>
+
+<body>
+
+    <h1>Fruit Market</h1>
+
+    <?php
+    $productoController->index();
+    $marcaController->index();
+    $ciudadController->index();
+    $departamentoController->index();
+    $tipoDocController->index();
+    $tipoPagoController->index();
+    $tipoProductoController->index();
+    ?>
+
+</body>
+</html>
